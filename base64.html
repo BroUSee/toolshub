@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Base64 Encoder Decoder — Free Online Tool | ToolsHub</title>
+<meta name="description" content="Encode text to Base64 or decode Base64 strings instantly. Free online Base64 encoder decoder tool for developers.">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div class="cursor"></div><div class="cursor-ring"></div>
+<nav>
+  <a href="../index.html" class="logo">Tools<span>Hub</span></a>
+  <ul class="nav-links">
+    <li><a href="../index.html#calculators">Calculators</a></li>
+    <li><a href="../index.html#text-tools">Text Tools</a></li>
+    <li><a href="../index.html#dev-tools">Dev Tools</a></li>
+    <li><a href="all-tools.html" class="nav-cta">All Tools →</a></li>
+  </ul>
+</nav>
+<div class="tool-page">
+  <div class="breadcrumb"><a href="../index.html">Home</a><span>›</span><a href="../index.html#dev-tools">Dev Tools</a><span>›</span>Base64 Encoder / Decoder</div>
+  <div class="tool-page-header">
+    <div class="tool-page-icon">⚙️</div>
+    <h1>Base64 Encoder / Decoder</h1>
+    <p>Encode any text to Base64 format or decode Base64 strings back to plain text. Runs entirely in your browser — nothing is sent to any server.</p>
+  </div>
+  <div class="tool-box">
+    <div class="tool-tabs">
+      <button class="tool-tab active" id="tab1" onclick="setMode('encode')">Encode to Base64</button>
+      <button class="tool-tab" id="tab2" onclick="setMode('decode')">Decode from Base64</button>
+    </div>
+    <div class="input-group"><label class="input-label" id="inputLabel">Plain Text to Encode</label><textarea id="input" rows="6" placeholder="Enter text to encode..."></textarea></div>
+    <button class="calculate-btn" onclick="process()">Convert</button>
+    <div class="result-area" id="result">
+      <div class="result-label-sm" id="resultLabel">Base64 Output</div>
+      <div id="output" style="font-size:0.85rem;word-break:break-all;line-height:1.7;color:var(--bg)"></div>
+      <button class="copy-btn" onclick="copyToClipboard(document.getElementById('output').textContent,this)">Copy Result</button>
+    </div>
+  </div>
+  <div class="info-box">
+    <h2>What is Base64?</h2>
+    <p>Base64 is an encoding scheme that converts binary data into ASCII text format. It is commonly used in web development to embed images directly in HTML or CSS, encode data in URLs, and handle authentication tokens. Every developer encounters Base64 regularly.</p>
+  </div>
+  <div class="related-section">
+    <h2>Related Tools</h2>
+    <div class="tools-grid" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr))">
+      <a href="password-generator.html" class="tool-card"><div class="tool-icon-wrap" style="background:#e3f5ec">🔐</div><h3>Password Generator</h3><p>Generate strong passwords.</p></a>
+      <a href="color-converter.html" class="tool-card"><div class="tool-icon-wrap" style="background:#fde8e3">🎨</div><h3>Color Converter</h3><p>Convert HEX to RGB.</p></a>
+    </div>
+  </div>
+</div>
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand"><a href="../index.html" class="logo">Tools<span>Hub</span></a><p class="footer-desc">Free online tools. No signup required.</p></div>
+    <div class="footer-col"><h4>Calculators</h4><ul><li><a href="percentage-calculator.html">Percentage</a></li><li><a href="cgpa-calculator.html">CGPA Converter</a></li></ul></div>
+    <div class="footer-col"><h4>Text Tools</h4><ul><li><a href="word-counter.html">Word Counter</a></li><li><a href="case-converter.html">Case Converter</a></li></ul></div>
+    <div class="footer-col"><h4>Dev Tools</h4><ul><li><a href="password-generator.html">Password Generator</a></li><li><a href="color-converter.html">Color Converter</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2025 <strong>ToolsHub</strong></span><span>Free forever · No login</span></div>
+</footer>
+<script src="../js/main.js"></script>
+<script>
+let mode='encode';
+function setMode(m){
+  mode=m;
+  document.getElementById('tab1').className='tool-tab'+(m==='encode'?' active':'');
+  document.getElementById('tab2').className='tool-tab'+(m==='decode'?' active':'');
+  document.getElementById('inputLabel').textContent=m==='encode'?'Plain Text to Encode':'Base64 String to Decode';
+  document.getElementById('input').placeholder=m==='encode'?'Enter text to encode...':'Enter Base64 string to decode...';
+  document.getElementById('result').classList.remove('show');
+}
+function process(){
+  const val=document.getElementById('input').value;
+  if(!val.trim())return;
+  let out='';
+  try{
+    if(mode==='encode'){out=btoa(unescape(encodeURIComponent(val)));document.getElementById('resultLabel').textContent='Base64 Encoded';}
+    else{out=decodeURIComponent(escape(atob(val)));document.getElementById('resultLabel').textContent='Decoded Text';}
+  }catch(e){out='⚠️ Error: Invalid input. Make sure you are pasting valid Base64 text for decoding.';}
+  document.getElementById('output').textContent=out;
+  document.getElementById('result').classList.add('show');
+}
+</script>
+</body>
+</html>

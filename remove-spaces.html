@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Remove Extra Spaces — Clean Text Online Free | ToolsHub</title>
+<meta name="description" content="Remove extra spaces from text online. Clean up messy copied text by removing extra spaces, tabs and blank lines in one click.">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div class="cursor"></div><div class="cursor-ring"></div>
+<nav>
+  <a href="../index.html" class="logo">Tools<span>Hub</span></a>
+  <ul class="nav-links">
+    <li><a href="../index.html#calculators">Calculators</a></li>
+    <li><a href="../index.html#text-tools">Text Tools</a></li>
+    <li><a href="../index.html#dev-tools">Dev Tools</a></li>
+    <li><a href="all-tools.html" class="nav-cta">All Tools →</a></li>
+  </ul>
+</nav>
+<div class="tool-page">
+  <div class="breadcrumb"><a href="../index.html">Home</a><span>›</span><a href="../index.html#text-tools">Text Tools</a><span>›</span>Remove Extra Spaces</div>
+  <div class="tool-page-header">
+    <div class="tool-page-icon">✂️</div>
+    <h1>Remove Extra Spaces</h1>
+    <p>Clean messy text instantly. Remove extra spaces, tabs, blank lines or all whitespace in one click.</p>
+  </div>
+  <div class="tool-box">
+    <div class="input-group"><label class="input-label">Messy Text</label><textarea id="txt" rows="7" placeholder="Paste your text with extra spaces here..."></textarea></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <button class="calculate-btn" style="margin-top:0" onclick="clean('extra')">Remove Extra Spaces</button>
+      <button class="calculate-btn" style="margin-top:0;background:var(--bg2);color:var(--text);border-color:var(--border)" onclick="clean('lines')">Remove Blank Lines</button>
+      <button class="calculate-btn" style="margin-top:0;background:var(--bg2);color:var(--text);border-color:var(--border)" onclick="clean('trim')">Trim Each Line</button>
+      <button class="calculate-btn" style="margin-top:0;background:var(--bg2);color:var(--text);border-color:var(--border)" onclick="clean('all')">Remove ALL Spaces</button>
+    </div>
+    <div class="result-area" id="result">
+      <div class="result-label-sm">Cleaned Text</div>
+      <div id="output" style="font-size:0.9rem;line-height:1.7;word-break:break-word;color:var(--bg)"></div>
+      <button class="copy-btn" onclick="copyToClipboard(document.getElementById('output').textContent,this)">Copy Result</button>
+    </div>
+  </div>
+  <div class="info-box">
+    <h2>When do you need this tool?</h2>
+    <p>When you copy text from PDF files, websites, or Word documents, extra spaces and blank lines often get included. This tool removes them so your text looks clean and professional. Useful for students, writers and developers who work with copied content.</p>
+  </div>
+  <div class="related-section">
+    <h2>Related Tools</h2>
+    <div class="tools-grid" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr))">
+      <a href="word-counter.html" class="tool-card"><div class="tool-icon-wrap" style="background:#e3f5ec">📝</div><h3>Word Counter</h3><p>Count words and characters.</p></a>
+      <a href="case-converter.html" class="tool-card"><div class="tool-icon-wrap" style="background:#fde8e3">Aa</div><h3>Case Converter</h3><p>Convert text to any case.</p></a>
+    </div>
+  </div>
+</div>
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand"><a href="../index.html" class="logo">Tools<span>Hub</span></a><p class="footer-desc">Free online tools. No signup required.</p></div>
+    <div class="footer-col"><h4>Calculators</h4><ul><li><a href="percentage-calculator.html">Percentage</a></li><li><a href="cgpa-calculator.html">CGPA Converter</a></li></ul></div>
+    <div class="footer-col"><h4>Text Tools</h4><ul><li><a href="word-counter.html">Word Counter</a></li><li><a href="case-converter.html">Case Converter</a></li></ul></div>
+    <div class="footer-col"><h4>Dev Tools</h4><ul><li><a href="password-generator.html">Password Generator</a></li><li><a href="base64.html">Base64 Tool</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2025 <strong>ToolsHub</strong></span><span>Free forever · No login</span></div>
+</footer>
+<script src="../js/main.js"></script>
+<script>
+function clean(type){
+  const t=document.getElementById('txt').value;
+  if(!t.trim())return;
+  let out=t;
+  if(type==='extra')out=t.replace(/[ \t]+/g,' ').replace(/^ | $/gm,'').trim();
+  else if(type==='lines')out=t.replace(/^\s*[\r\n]/gm,'').trim();
+  else if(type==='trim')out=t.split('\n').map(l=>l.trim()).join('\n').trim();
+  else if(type==='all')out=t.replace(/\s+/g,'');
+  document.getElementById('output').textContent=out;
+  document.getElementById('result').classList.add('show');
+}
+</script>
+</body>
+</html>

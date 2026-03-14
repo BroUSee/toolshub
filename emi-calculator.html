@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EMI Calculator — Monthly Loan EMI Free | ToolsHub</title>
+<meta name="description" content="Calculate monthly EMI for home loan, car loan, personal loan. Free EMI calculator with total interest and payment breakdown.">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div class="cursor"></div><div class="cursor-ring"></div>
+<nav>
+  <a href="../index.html" class="logo">Tools<span>Hub</span></a>
+  <ul class="nav-links">
+    <li><a href="../index.html#calculators">Calculators</a></li>
+    <li><a href="../index.html#text-tools">Text Tools</a></li>
+    <li><a href="../index.html#dev-tools">Dev Tools</a></li>
+    <li><a href="all-tools.html" class="nav-cta">All Tools →</a></li>
+  </ul>
+</nav>
+<div class="tool-page">
+  <div class="breadcrumb"><a href="../index.html">Home</a><span>›</span><a href="../index.html#calculators">Calculators</a><span>›</span>EMI Calculator</div>
+  <div class="tool-page-header">
+    <div class="tool-page-icon">💰</div>
+    <h1>EMI Calculator</h1>
+    <p>Calculate your monthly EMI for any loan — home, car, personal or education. Get full breakdown of total interest and total payment.</p>
+  </div>
+  <div class="tool-box">
+    <div class="input-group"><label class="input-label">Loan Amount (₹)</label><input type="number" id="amt" placeholder="e.g. 500000"></div>
+    <div class="row">
+      <div class="input-group"><label class="input-label">Annual Interest Rate (%)</label><input type="number" id="rate" placeholder="e.g. 8.5" step="0.1"></div>
+      <div class="input-group"><label class="input-label">Loan Tenure (Months)</label><input type="number" id="tenure" placeholder="e.g. 60"></div>
+    </div>
+    <button class="calculate-btn" onclick="calcEMI()">Calculate EMI</button>
+    <div class="result-area" id="result">
+      <div class="result-label-sm">Monthly EMI</div>
+      <div class="result-main" id="emiVal"></div>
+      <div class="result-sub" id="emiSub"></div>
+    </div>
+  </div>
+  <div class="info-box">
+    <h2>EMI Formula</h2>
+    <p>EMI = P × r × (1+r)^n / ((1+r)^n - 1) where P is principal loan amount, r is monthly interest rate (annual rate ÷ 12 ÷ 100), and n is number of monthly installments.</p>
+    <p>For example: ₹5,00,000 loan at 8.5% for 5 years (60 months) = EMI of approximately ₹10,224 per month.</p>
+  </div>
+  <div class="related-section">
+    <h2>Related Tools</h2>
+    <div class="tools-grid" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr))">
+      <a href="percentage-calculator.html" class="tool-card"><div class="tool-icon-wrap" style="background:#fde8e3">%</div><h3>Percentage Calculator</h3><p>Calculate any percentage fast.</p></a>
+      <a href="gst-calculator.html" class="tool-card"><div class="tool-icon-wrap" style="background:#fef9e3">🧾</div><h3>GST Calculator</h3><p>Add or remove GST instantly.</p></a>
+    </div>
+  </div>
+</div>
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand"><a href="../index.html" class="logo">Tools<span>Hub</span></a><p class="footer-desc">Free online tools. No signup required.</p></div>
+    <div class="footer-col"><h4>Calculators</h4><ul><li><a href="percentage-calculator.html">Percentage</a></li><li><a href="cgpa-calculator.html">CGPA Converter</a></li><li><a href="gst-calculator.html">GST Calculator</a></li></ul></div>
+    <div class="footer-col"><h4>Text Tools</h4><ul><li><a href="word-counter.html">Word Counter</a></li><li><a href="case-converter.html">Case Converter</a></li></ul></div>
+    <div class="footer-col"><h4>Dev Tools</h4><ul><li><a href="password-generator.html">Password Generator</a></li><li><a href="base64.html">Base64 Tool</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2025 <strong>ToolsHub</strong></span><span>Free forever · No login</span></div>
+</footer>
+<script src="../js/main.js"></script>
+<script>
+function calcEMI(){
+  const P=parseFloat(document.getElementById('amt').value);
+  const r=parseFloat(document.getElementById('rate').value)/12/100;
+  const n=parseFloat(document.getElementById('tenure').value);
+  if(isNaN(P)||isNaN(r)||isNaN(n)||r===0)return;
+  const emi=P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
+  const total=emi*n;
+  const interest=total-P;
+  document.getElementById('emiVal').textContent='₹'+Math.round(emi).toLocaleString('en-IN');
+  document.getElementById('emiSub').textContent='Total Payment: ₹'+Math.round(total).toLocaleString('en-IN')+' · Total Interest: ₹'+Math.round(interest).toLocaleString('en-IN');
+  document.getElementById('result').classList.add('show');
+}
+</script>
+</body>
+</html>

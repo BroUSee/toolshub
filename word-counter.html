@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Word Counter — Count Words, Characters & More Free | ToolsHub</title>
+<meta name="description" content="Free online word counter. Count words, characters, sentences and paragraphs instantly. See reading time estimate. No signup needed.">
+<meta name="keywords" content="word counter, character counter, word count online, count words free, words in text">
+<link rel="canonical" href="https://toolshub.in/tools/word-counter.html">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="cursor"></div>
+<div class="cursor-ring"></div>
+
+<nav>
+  <a href="../index.html" class="logo">Tools<span>Hub</span></a>
+  <ul class="nav-links">
+    <li><a href="../index.html#calculators">Calculators</a></li>
+    <li><a href="../index.html#text-tools">Text Tools</a></li>
+    <li><a href="../index.html#dev-tools">Dev Tools</a></li>
+    <li><a href="all-tools.html" class="nav-cta">All Tools →</a></li>
+  </ul>
+</nav>
+
+<div class="tool-page">
+
+  <div class="breadcrumb">
+    <a href="../index.html">Home</a>
+    <span>›</span>
+    <a href="../index.html#text-tools">Text Tools</a>
+    <span>›</span>
+    Word Counter
+  </div>
+
+  <div class="tool-page-header">
+    <div class="tool-page-icon">📝</div>
+    <h1>Word Counter</h1>
+    <p>Paste or type your text and instantly see word count, character count, sentences, paragraphs and estimated reading time. Updates live as you type.</p>
+  </div>
+
+  <div class="tool-box">
+    <div class="input-group">
+      <label class="input-label">Your Text</label>
+      <textarea id="text" rows="10" placeholder="Start typing or paste your text here..." oninput="count()"></textarea>
+    </div>
+
+    <div class="count-grid" id="countGrid">
+      <div class="count-chip"><div class="num" id="c_words">0</div><div class="lbl">Words</div></div>
+      <div class="count-chip"><div class="num" id="c_chars">0</div><div class="lbl">Characters</div></div>
+      <div class="count-chip"><div class="num" id="c_nospace">0</div><div class="lbl">No Spaces</div></div>
+      <div class="count-chip"><div class="num" id="c_sent">0</div><div class="lbl">Sentences</div></div>
+      <div class="count-chip"><div class="num" id="c_para">0</div><div class="lbl">Paragraphs</div></div>
+      <div class="count-chip"><div class="num" id="c_read">0 min</div><div class="lbl">Read Time</div></div>
+    </div>
+
+    <button class="calculate-btn" style="margin-top:20px" onclick="document.getElementById('text').value='';count()">Clear Text</button>
+  </div>
+
+  <div class="info-box">
+    <h2>How does the Word Counter work?</h2>
+    <p>Our word counter splits your text by whitespace to count words, counts each character individually, splits by punctuation to count sentences, and splits by double line breaks to count paragraphs. Reading time is estimated at 200 words per minute, which is the average adult reading speed.</p>
+    <p>This tool is useful for students writing essays with word limits, content creators writing blog posts, social media managers counting Instagram or Twitter characters, and developers testing text processing.</p>
+  </div>
+
+  <div class="related-section">
+    <h2>Related Tools</h2>
+    <div class="tools-grid" style="grid-template-columns: repeat(auto-fill, minmax(220px,1fr))">
+      <a href="case-converter.html" class="tool-card">
+        <div class="tool-icon-wrap" style="background:#fde8e3">Aa</div>
+        <h3>Case Converter</h3>
+        <p>Convert text to any case format.</p>
+      </a>
+      <a href="remove-spaces.html" class="tool-card">
+        <div class="tool-icon-wrap" style="background:#fef9e3">✂️</div>
+        <h3>Remove Spaces</h3>
+        <p>Clean messy text instantly.</p>
+      </a>
+      <a href="percentage-calculator.html" class="tool-card">
+        <div class="tool-icon-wrap" style="background:#e3f5ec">%</div>
+        <h3>Percentage Calculator</h3>
+        <p>Calculate any percentage fast.</p>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="../index.html" class="logo">Tools<span>Hub</span></a>
+      <p class="footer-desc">Free online tools for students and developers.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Calculators</h4>
+      <ul>
+        <li><a href="percentage-calculator.html">Percentage</a></li>
+        <li><a href="cgpa-calculator.html">CGPA Converter</a></li>
+        <li><a href="emi-calculator.html">EMI Calculator</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Text Tools</h4>
+      <ul>
+        <li><a href="word-counter.html">Word Counter</a></li>
+        <li><a href="case-converter.html">Case Converter</a></li>
+        <li><a href="remove-spaces.html">Remove Spaces</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Dev Tools</h4>
+      <ul>
+        <li><a href="password-generator.html">Password Generator</a></li>
+        <li><a href="base64.html">Base64 Tool</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 <strong>ToolsHub</strong> — Free forever.</span>
+    <span>No login · No tracking</span>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+<script>
+function count() {
+  const t = document.getElementById('text').value;
+  document.getElementById('c_words').textContent = t.trim() === '' ? 0 : t.trim().split(/\s+/).length;
+  document.getElementById('c_chars').textContent = t.length;
+  document.getElementById('c_nospace').textContent = t.replace(/\s/g,'').length;
+  document.getElementById('c_sent').textContent = t.split(/[.!?]+/).filter(s=>s.trim()).length;
+  const paras = t.trim() === '' ? 0 : t.split(/\n\s*\n/).filter(p=>p.trim()).length || 1;
+  document.getElementById('c_para').textContent = paras;
+  const words = t.trim() === '' ? 0 : t.trim().split(/\s+/).length;
+  document.getElementById('c_read').textContent = Math.ceil(words/200) + ' min';
+}
+</script>
+</body>
+</html>

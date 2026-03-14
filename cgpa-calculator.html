@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CGPA to Percentage Calculator — All Indian Universities | ToolsHub</title>
+<meta name="description" content="Convert CGPA to percentage for AKTU, VTU, Anna University, Mumbai University and all Indian universities. Free CGPA calculator with accurate formula.">
+<meta name="keywords" content="CGPA to percentage calculator, CGPA converter India, AKTU CGPA percentage, VTU percentage calculator, Anna university CGPA">
+<link rel="canonical" href="https://toolshub.in/tools/cgpa-calculator.html">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="cursor"></div>
+<div class="cursor-ring"></div>
+
+<nav>
+  <a href="../index.html" class="logo">Tools<span>Hub</span></a>
+  <ul class="nav-links">
+    <li><a href="../index.html#calculators">Calculators</a></li>
+    <li><a href="../index.html#text-tools">Text Tools</a></li>
+    <li><a href="../index.html#dev-tools">Dev Tools</a></li>
+    <li><a href="all-tools.html" class="nav-cta">All Tools →</a></li>
+  </ul>
+</nav>
+
+<div class="tool-page">
+
+  <div class="breadcrumb">
+    <a href="../index.html">Home</a>
+    <span>›</span>
+    <a href="../index.html#calculators">Calculators</a>
+    <span>›</span>
+    CGPA to Percentage Calculator
+  </div>
+
+  <div class="tool-page-header">
+    <div class="tool-page-icon">🎓</div>
+    <h1>CGPA to Percentage Calculator</h1>
+    <p>Convert your CGPA to percentage accurately for all major Indian universities. Supports AKTU, VTU, Anna University, Mumbai University and more.</p>
+  </div>
+
+  <div class="tool-box">
+    <div class="input-group">
+      <label class="input-label">Your CGPA (out of 10)</label>
+      <input type="number" id="cgpa" placeholder="e.g. 7.8" step="0.01" min="0" max="10" oninput="calcCGPA()">
+    </div>
+
+    <div class="input-group">
+      <label class="input-label">Select Your University / Formula</label>
+      <select id="formula" onchange="calcCGPA()">
+        <option value="10">Standard Formula (CGPA × 10) — Most Universities</option>
+        <option value="9.5">CBSE / Some Private Universities (CGPA × 9.5)</option>
+        <option value="9">Anna University — Chennai (CGPA × 9)</option>
+        <option value="vtu">VTU — Visvesvaraya (CGPA × 7.1 + 11)</option>
+        <option value="mumbai">Mumbai University (CGPA × 7.25 + 11)</option>
+      </select>
+    </div>
+
+    <div class="result-area" id="result">
+      <div class="result-label-sm">Your Percentage</div>
+      <div class="result-main" id="pctOutput"></div>
+      <div class="result-sub" id="gradeOutput"></div>
+      <button class="copy-btn" onclick="copyToClipboard(document.getElementById('pctOutput').textContent, this)">Copy Result</button>
+    </div>
+  </div>
+
+  <!-- SEO CONTENT — Important for Google ranking -->
+  <div class="info-box">
+    <h2>How is CGPA converted to Percentage?</h2>
+    <p>Different universities in India use different formulas to convert CGPA to percentage. The most common formula used by universities like AKTU, PTU, and RTU is simply multiplying your CGPA by 10. So a CGPA of 7.5 equals 75%.</p>
+    <p>Anna University uses the formula: Percentage = CGPA × 9. VTU uses a different formula: Percentage = (CGPA × 7.1) + 11. Always check your university's official formula to get the correct result.</p>
+    <h2 style="margin-top:18px">CGPA Grade Scale</h2>
+    <p>In India, a CGPA above 7.5 (75%+) is generally considered First Class with Distinction. Between 6.0–7.5 (60–75%) is First Class. Between 5.0–6.0 (50–60%) is Second Class. Below 5.0 is a Pass class or may require improvement.</p>
+  </div>
+
+  <!-- Related Tools -->
+  <div class="related-section">
+    <h2>Related Tools</h2>
+    <div class="tools-grid" style="grid-template-columns: repeat(auto-fill, minmax(220px,1fr))">
+      <a href="percentage-calculator.html" class="tool-card">
+        <div class="tool-icon-wrap" style="background:#fde8e3">%</div>
+        <h3>Percentage Calculator</h3>
+        <p>Calculate any percentage quickly.</p>
+      </a>
+      <a href="age-calculator.html" class="tool-card">
+        <div class="tool-icon-wrap" style="background:#fef9e3">🎂</div>
+        <h3>Age Calculator</h3>
+        <p>Find your exact age in days.</p>
+      </a>
+      <a href="emi-calculator.html" class="tool-card">
+        <div class="tool-icon-wrap" style="background:#e3f5ec">💰</div>
+        <h3>EMI Calculator</h3>
+        <p>Calculate your loan EMI easily.</p>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="../index.html" class="logo">Tools<span>Hub</span></a>
+      <p class="footer-desc">Free online tools for students and developers. No signup required.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+        <li><a href="age-calculator.html">Age Calculator</a></li>
+        <li><a href="emi-calculator.html">EMI Calculator</a></li>
+        <li><a href="gst-calculator.html">GST Calculator</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Text Tools</h4>
+      <ul>
+        <li><a href="word-counter.html">Word Counter</a></li>
+        <li><a href="case-converter.html">Case Converter</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Dev Tools</h4>
+      <ul>
+        <li><a href="password-generator.html">Password Generator</a></li>
+        <li><a href="base64.html">Base64 Tool</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 <strong>ToolsHub</strong> — Free forever.</span>
+    <span>No login · No tracking</span>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+<script>
+function calcCGPA() {
+  const cgpa = parseFloat(document.getElementById('cgpa').value);
+  const formula = document.getElementById('formula').value;
+  if (isNaN(cgpa) || cgpa < 0 || cgpa > 10) return;
+
+  let pct;
+  if (formula === 'vtu') pct = cgpa * 7.1 + 11;
+  else if (formula === 'mumbai') pct = cgpa * 7.25 + 11;
+  else pct = cgpa * parseFloat(formula);
+
+  pct = Math.min(pct, 100);
+
+  const grade = pct >= 75 ? '🟢 First Class with Distinction — Excellent result!'
+    : pct >= 60 ? '🔵 First Class — Good performance'
+    : pct >= 50 ? '🟡 Second Class — Average performance'
+    : '🔴 Pass Class — Consider improving next semester';
+
+  document.getElementById('pctOutput').textContent = pct.toFixed(2) + '%';
+  document.getElementById('gradeOutput').textContent = grade;
+  document.getElementById('result').classList.add('show');
+}
+</script>
+
+<!-- Schema markup for Google -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "CGPA to Percentage Calculator",
+  "description": "Convert CGPA to percentage for all Indian universities",
+  "url": "https://toolshub.in/tools/cgpa-calculator.html",
+  "applicationCategory": "UtilitiesApplication",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" }
+}
+</script>
+</body>
+</html>

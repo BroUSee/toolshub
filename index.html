@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ToolsHub — Free Online Tools for Students & Developers</title>
+<meta name="description" content="Free online tools for students and developers. Calculate CGPA, percentage, EMI, age, generate passwords, convert files and more. No signup required.">
+<meta name="keywords" content="free online tools, CGPA calculator, percentage calculator, EMI calculator, password generator, word counter, age calculator">
+<meta property="og:title" content="ToolsHub — Free Online Tools">
+<meta property="og:description" content="20+ free tools for students and developers. No login required.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="cursor"></div>
+<div class="cursor-ring"></div>
+
+<nav>
+  <a href="index.html" class="logo">Tools<span>Hub</span></a>
+  <ul class="nav-links">
+    <li><a href="#calculators">Calculators</a></li>
+    <li><a href="#text-tools">Text Tools</a></li>
+    <li><a href="#dev-tools">Dev Tools</a></li>
+    <li><a href="tools/all-tools.html" class="nav-cta">All Tools →</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">⚡ 100% Free — No Login Needed</div>
+    <h1>Every Tool<br>You'll Ever<br><em>Need.</em></h1>
+    <p class="hero-desc">Fast, free tools for students, developers and everyday use. From CGPA calculators to password generators — we've got you covered.</p>
+    <div class="hero-actions">
+      <a href="#calculators" class="btn-primary">Explore Tools →</a>
+      <a href="tools/all-tools.html" class="btn-outline">View All 20+</a>
+    </div>
+  </div>
+
+  <!-- Live mini tool in hero -->
+  <div class="hero-right">
+    <div class="mini-tool-title"><span>%</span> Quick Percentage Calculator</div>
+    <div class="input-group">
+      <label class="input-label">What is</label>
+      <input type="number" id="hp1" placeholder="25" oninput="heroCalc()">
+    </div>
+    <div class="input-group">
+      <label class="input-label">% of</label>
+      <input type="number" id="hp2" placeholder="400" oninput="heroCalc()">
+    </div>
+    <div class="result-area" id="heroResult">
+      <div class="result-label-sm">Answer</div>
+      <div class="result-main" id="heroAnswer">—</div>
+      <div class="result-sub" id="heroSub"></div>
+    </div>
+    <div style="margin-top:16px">
+      <a href="tools/percentage-calculator.html" style="color:var(--accent2);font-size:0.82rem;font-weight:700;text-decoration:none">Open Full Tool →</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stat"><div class="stat-num">20+</div><div class="stat-label">Free Tools</div></div>
+  <div class="stat"><div class="stat-num">0</div><div class="stat-label">Signup Required</div></div>
+  <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Free Forever</div></div>
+  <div class="stat"><div class="stat-num">∞</div><div class="stat-label">Daily Uses</div></div>
+</div>
+
+<!-- CALCULATOR TOOLS -->
+<section class="tools-section" id="calculators">
+  <div class="section-header">
+    <div class="section-title">Calculator Tools<span class="dot">.</span></div>
+    <a href="tools/all-tools.html#calculators" class="view-all">View All →</a>
+  </div>
+  <div class="tools-grid">
+
+    <a href="tools/percentage-calculator.html" class="tool-card">
+      <span class="tool-badge badge-hot">🔥 Hot</span>
+      <div class="tool-icon-wrap" style="background:#fde8e3">%</div>
+      <h3>Percentage Calculator</h3>
+      <p>Calculate any percentage instantly. Find what % one number is of another.</p>
+    </a>
+
+    <a href="tools/age-calculator.html" class="tool-card">
+      <span class="tool-badge badge-popular">⭐ Popular</span>
+      <div class="tool-icon-wrap" style="background:#fef9e3">🎂</div>
+      <h3>Age Calculator</h3>
+      <p>Find your exact age in years, months, days, hours and minutes.</p>
+    </a>
+
+    <a href="tools/cgpa-calculator.html" class="tool-card">
+      <span class="tool-badge badge-hot">🔥 Hot</span>
+      <div class="tool-icon-wrap" style="background:#e3f5ec">🎓</div>
+      <h3>CGPA to Percentage</h3>
+      <p>Convert CGPA to percentage for all Indian universities including AKTU, VTU, Anna.</p>
+    </a>
+
+    <a href="tools/emi-calculator.html" class="tool-card">
+      <span class="tool-badge badge-new">✨ New</span>
+      <div class="tool-icon-wrap" style="background:#fde8e3">💰</div>
+      <h3>EMI Calculator</h3>
+      <p>Calculate monthly loan EMI with total interest and payment breakdown.</p>
+    </a>
+
+    <a href="tools/gst-calculator.html" class="tool-card">
+      <span class="tool-badge badge-new">✨ New</span>
+      <div class="tool-icon-wrap" style="background:#fef9e3">🧾</div>
+      <h3>GST Calculator</h3>
+      <p>Add or remove GST from any amount. Supports all GST slabs — 5%, 12%, 18%, 28%.</p>
+    </a>
+
+    <a href="tools/discount-calculator.html" class="tool-card">
+      <div class="tool-icon-wrap" style="background:#e3f5ec">🏷️</div>
+      <h3>Discount Calculator</h3>
+      <p>Find final price after discount. Calculate how much you save on any deal.</p>
+    </a>
+
+  </div>
+</section>
+
+<!-- TEXT TOOLS -->
+<section class="tools-section" id="text-tools" style="padding-top:0">
+  <div class="section-header">
+    <div class="section-title">Text Tools<span class="dot">.</span></div>
+    <a href="tools/all-tools.html#text" class="view-all">View All →</a>
+  </div>
+  <div class="tools-grid">
+
+    <a href="tools/word-counter.html" class="tool-card">
+      <span class="tool-badge badge-popular">⭐ Popular</span>
+      <div class="tool-icon-wrap" style="background:#e3f5ec">📝</div>
+      <h3>Word Counter</h3>
+      <p>Count words, characters, sentences and paragraphs. See estimated read time live.</p>
+    </a>
+
+    <a href="tools/case-converter.html" class="tool-card">
+      <div class="tool-icon-wrap" style="background:#fde8e3">Aa</div>
+      <h3>Case Converter</h3>
+      <p>Convert text to UPPERCASE, lowercase, Title Case or Sentence case instantly.</p>
+    </a>
+
+    <a href="tools/remove-spaces.html" class="tool-card">
+      <div class="tool-icon-wrap" style="background:#fef9e3">✂️</div>
+      <h3>Remove Extra Spaces</h3>
+      <p>Clean messy copied text. Remove extra spaces, tabs and blank lines in one click.</p>
+    </a>
+
+  </div>
+</section>
+
+<!-- DEV TOOLS -->
+<section class="tools-section" id="dev-tools" style="padding-top:0">
+  <div class="section-header">
+    <div class="section-title">Developer Tools<span class="dot">.</span></div>
+    <a href="tools/all-tools.html#dev" class="view-all">View All →</a>
+  </div>
+  <div class="tools-grid">
+
+    <a href="tools/password-generator.html" class="tool-card">
+      <span class="tool-badge badge-hot">🔥 Hot</span>
+      <div class="tool-icon-wrap" style="background:#e3f5ec">🔐</div>
+      <h3>Password Generator</h3>
+      <p>Generate strong secure passwords with custom length and character options.</p>
+    </a>
+
+    <a href="tools/base64.html" class="tool-card">
+      <span class="tool-badge badge-new">✨ New</span>
+      <div class="tool-icon-wrap" style="background:#fde8e3">⚙️</div>
+      <h3>Base64 Encoder/Decoder</h3>
+      <p>Encode text to Base64 or decode Base64 strings. Used by developers daily.</p>
+    </a>
+
+    <a href="tools/color-converter.html" class="tool-card">
+      <div class="tool-icon-wrap" style="background:#fef9e3">🎨</div>
+      <h3>HEX to RGB Converter</h3>
+      <p>Convert HEX color codes to RGB and RGBA values for your CSS instantly.</p>
+    </a>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="logo">Tools<span>Hub</span></a>
+      <p class="footer-desc">Free online tools for students, developers and everyday users. No signup, no tracking, no nonsense.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Calculators</h4>
+      <ul>
+        <li><a href="tools/percentage-calculator.html">Percentage</a></li>
+        <li><a href="tools/age-calculator.html">Age Calculator</a></li>
+        <li><a href="tools/cgpa-calculator.html">CGPA Converter</a></li>
+        <li><a href="tools/emi-calculator.html">EMI Calculator</a></li>
+        <li><a href="tools/gst-calculator.html">GST Calculator</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Text Tools</h4>
+      <ul>
+        <li><a href="tools/word-counter.html">Word Counter</a></li>
+        <li><a href="tools/case-converter.html">Case Converter</a></li>
+        <li><a href="tools/remove-spaces.html">Remove Spaces</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Dev Tools</h4>
+      <ul>
+        <li><a href="tools/password-generator.html">Password Generator</a></li>
+        <li><a href="tools/base64.html">Base64 Tool</a></li>
+        <li><a href="tools/color-converter.html">Color Converter</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 <strong>ToolsHub</strong> — Free forever. No login needed.</span>
+    <span>Built with ❤️ for students & developers</span>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+function heroCalc() {
+  const p = parseFloat(document.getElementById('hp1').value);
+  const n = parseFloat(document.getElementById('hp2').value);
+  const res = document.getElementById('heroResult');
+  if (!isNaN(p) && !isNaN(n) && n !== 0) {
+    const ans = (p / 100) * n;
+    document.getElementById('heroAnswer').textContent = ans.toFixed(2);
+    document.getElementById('heroSub').textContent = `${p}% of ${n} equals ${ans.toFixed(4)}`;
+    res.classList.add('show');
+  }
+}
+</script>
+</body>
+</html>

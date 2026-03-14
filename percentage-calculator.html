@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Percentage Calculator — Free Online | ToolsHub</title>
+<meta name="description" content="Calculate percentage instantly online. Find what percent one number is of another. Free percentage calculator with no signup required.">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div class="cursor"></div><div class="cursor-ring"></div>
+<nav>
+  <a href="../index.html" class="logo">Tools<span>Hub</span></a>
+  <ul class="nav-links">
+    <li><a href="../index.html#calculators">Calculators</a></li>
+    <li><a href="../index.html#text-tools">Text Tools</a></li>
+    <li><a href="../index.html#dev-tools">Dev Tools</a></li>
+    <li><a href="all-tools.html" class="nav-cta">All Tools →</a></li>
+  </ul>
+</nav>
+<div class="tool-page">
+  <div class="breadcrumb"><a href="../index.html">Home</a><span>›</span><a href="../index.html#calculators">Calculators</a><span>›</span>Percentage Calculator</div>
+  <div class="tool-page-header">
+    <div class="tool-page-icon">%</div>
+    <h1>Percentage Calculator</h1>
+    <p>Calculate any percentage instantly. Find what % one number is of another, or calculate increase and decrease.</p>
+  </div>
+  <div class="tool-box">
+    <p style="font-size:0.82rem;color:var(--muted);margin-bottom:20px;font-weight:600;text-transform:uppercase;letter-spacing:1px">Mode 1 — What is X% of Y?</p>
+    <div class="row">
+      <div class="input-group"><label class="input-label">Percentage (%)</label><input type="number" id="p1" placeholder="e.g. 25" oninput="calc1()"></div>
+      <div class="input-group"><label class="input-label">Of Number</label><input type="number" id="p2" placeholder="e.g. 400" oninput="calc1()"></div>
+    </div>
+    <div class="result-area" id="r1">
+      <div class="result-label-sm">Answer</div>
+      <div class="result-main" id="r1val"></div>
+      <div class="result-sub" id="r1sub"></div>
+    </div>
+    <div style="height:1px;background:var(--border);margin:28px 0"></div>
+    <p style="font-size:0.82rem;color:var(--muted);margin-bottom:20px;font-weight:600;text-transform:uppercase;letter-spacing:1px">Mode 2 — A is what % of B?</p>
+    <div class="row">
+      <div class="input-group"><label class="input-label">Value A</label><input type="number" id="p3" placeholder="e.g. 50" oninput="calc2()"></div>
+      <div class="input-group"><label class="input-label">Value B</label><input type="number" id="p4" placeholder="e.g. 200" oninput="calc2()"></div>
+    </div>
+    <div class="result-area" id="r2">
+      <div class="result-label-sm">A is</div>
+      <div class="result-main" id="r2val"></div>
+      <div class="result-sub">of B</div>
+    </div>
+    <div style="height:1px;background:var(--border);margin:28px 0"></div>
+    <p style="font-size:0.82rem;color:var(--muted);margin-bottom:20px;font-weight:600;text-transform:uppercase;letter-spacing:1px">Mode 3 — Percentage Change</p>
+    <div class="row">
+      <div class="input-group"><label class="input-label">Original Value</label><input type="number" id="p5" placeholder="e.g. 100" oninput="calc3()"></div>
+      <div class="input-group"><label class="input-label">New Value</label><input type="number" id="p6" placeholder="e.g. 125" oninput="calc3()"></div>
+    </div>
+    <div class="result-area" id="r3">
+      <div class="result-label-sm">Change</div>
+      <div class="result-main" id="r3val"></div>
+      <div class="result-sub" id="r3sub"></div>
+    </div>
+  </div>
+  <div class="info-box">
+    <h2>How to calculate percentage?</h2>
+    <p>To find X% of Y: multiply Y by X and divide by 100. For example, 25% of 400 = (400 × 25) / 100 = 100.</p>
+    <p>To find what percentage A is of B: divide A by B and multiply by 100. For example, 50 is what % of 200? = (50/200) × 100 = 25%.</p>
+  </div>
+  <div class="related-section">
+    <h2>Related Tools</h2>
+    <div class="tools-grid" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr))">
+      <a href="cgpa-calculator.html" class="tool-card"><div class="tool-icon-wrap" style="background:#e3f5ec">🎓</div><h3>CGPA Calculator</h3><p>Convert CGPA to percentage.</p></a>
+      <a href="emi-calculator.html" class="tool-card"><div class="tool-icon-wrap" style="background:#fde8e3">💰</div><h3>EMI Calculator</h3><p>Calculate your loan EMI.</p></a>
+      <a href="discount-calculator.html" class="tool-card"><div class="tool-icon-wrap" style="background:#fef9e3">🏷️</div><h3>Discount Calculator</h3><p>Find final price after discount.</p></a>
+    </div>
+  </div>
+</div>
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand"><a href="../index.html" class="logo">Tools<span>Hub</span></a><p class="footer-desc">Free online tools. No signup required.</p></div>
+    <div class="footer-col"><h4>Calculators</h4><ul><li><a href="cgpa-calculator.html">CGPA Converter</a></li><li><a href="emi-calculator.html">EMI Calculator</a></li><li><a href="gst-calculator.html">GST Calculator</a></li></ul></div>
+    <div class="footer-col"><h4>Text Tools</h4><ul><li><a href="word-counter.html">Word Counter</a></li><li><a href="case-converter.html">Case Converter</a></li></ul></div>
+    <div class="footer-col"><h4>Dev Tools</h4><ul><li><a href="password-generator.html">Password Generator</a></li><li><a href="base64.html">Base64 Tool</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2025 <strong>ToolsHub</strong></span><span>Free forever · No login</span></div>
+</footer>
+<script src="../js/main.js"></script>
+<script>
+function calc1(){const p=parseFloat(document.getElementById('p1').value),n=parseFloat(document.getElementById('p2').value);if(isNaN(p)||isNaN(n))return;const r=(p/100)*n;document.getElementById('r1val').textContent=r.toFixed(2);document.getElementById('r1sub').textContent=p+'% of '+n+' = '+r.toFixed(4);document.getElementById('r1').classList.add('show');}
+function calc2(){const a=parseFloat(document.getElementById('p3').value),b=parseFloat(document.getElementById('p4').value);if(isNaN(a)||isNaN(b)||b===0)return;document.getElementById('r2val').textContent=((a/b)*100).toFixed(2)+'%';document.getElementById('r2').classList.add('show');}
+function calc3(){const o=parseFloat(document.getElementById('p5').value),n=parseFloat(document.getElementById('p6').value);if(isNaN(o)||isNaN(n)||o===0)return;const c=((n-o)/Math.abs(o))*100;document.getElementById('r3val').textContent=(c>=0?'+':'')+c.toFixed(2)+'%';document.getElementById('r3sub').textContent=c>=0?'Increase from '+o+' to '+n:'Decrease from '+o+' to '+n;document.getElementById('r3').classList.add('show');}
+</script>
+</body>

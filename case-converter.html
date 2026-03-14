@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Converter — UPPERCASE lowercase Title Case | ToolsHub</title>
+<meta name="description" content="Convert text to UPPERCASE, lowercase, Title Case or Sentence case instantly. Free online case converter tool.">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div class="cursor"></div><div class="cursor-ring"></div>
+<nav>
+  <a href="../index.html" class="logo">Tools<span>Hub</span></a>
+  <ul class="nav-links">
+    <li><a href="../index.html#calculators">Calculators</a></li>
+    <li><a href="../index.html#text-tools">Text Tools</a></li>
+    <li><a href="../index.html#dev-tools">Dev Tools</a></li>
+    <li><a href="all-tools.html" class="nav-cta">All Tools →</a></li>
+  </ul>
+</nav>
+<div class="tool-page">
+  <div class="breadcrumb"><a href="../index.html">Home</a><span>›</span><a href="../index.html#text-tools">Text Tools</a><span>›</span>Case Converter</div>
+  <div class="tool-page-header">
+    <div class="tool-page-icon">Aa</div>
+    <h1>Case Converter</h1>
+    <p>Transform your text to UPPERCASE, lowercase, Title Case, Sentence case or alternating case. One click conversion.</p>
+  </div>
+  <div class="tool-box">
+    <div class="input-group"><label class="input-label">Your Text</label><textarea id="txt" rows="6" placeholder="Type or paste your text here..."></textarea></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <button class="calculate-btn" style="margin-top:0" onclick="convert('upper')">UPPERCASE</button>
+      <button class="calculate-btn" style="margin-top:0;background:var(--bg2);color:var(--text);border-color:var(--border)" onclick="convert('lower')">lowercase</button>
+      <button class="calculate-btn" style="margin-top:0;background:var(--bg2);color:var(--text);border-color:var(--border)" onclick="convert('title')">Title Case</button>
+      <button class="calculate-btn" style="margin-top:0;background:var(--bg2);color:var(--text);border-color:var(--border)" onclick="convert('sentence')">Sentence case</button>
+    </div>
+    <div class="result-area" id="result">
+      <div class="result-label-sm" id="caseLabel">Converted Text</div>
+      <div id="output" style="font-size:0.95rem;line-height:1.7;word-break:break-word;color:var(--bg)"></div>
+      <button class="copy-btn" onclick="copyToClipboard(document.getElementById('output').textContent,this)">Copy Result</button>
+    </div>
+  </div>
+  <div class="info-box">
+    <h2>When to use each case?</h2>
+    <p>UPPERCASE is used for headings, abbreviations and emphasis. lowercase is used for casual writing and URLs. Title Case capitalizes first letter of each word — used for titles and headings. Sentence case only capitalizes first word — used for normal sentences and paragraphs.</p>
+  </div>
+  <div class="related-section">
+    <h2>Related Tools</h2>
+    <div class="tools-grid" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr))">
+      <a href="word-counter.html" class="tool-card"><div class="tool-icon-wrap" style="background:#e3f5ec">📝</div><h3>Word Counter</h3><p>Count words and characters.</p></a>
+      <a href="remove-spaces.html" class="tool-card"><div class="tool-icon-wrap" style="background:#fef9e3">✂️</div><h3>Remove Spaces</h3><p>Clean messy text fast.</p></a>
+    </div>
+  </div>
+</div>
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand"><a href="../index.html" class="logo">Tools<span>Hub</span></a><p class="footer-desc">Free online tools. No signup required.</p></div>
+    <div class="footer-col"><h4>Calculators</h4><ul><li><a href="percentage-calculator.html">Percentage</a></li><li><a href="cgpa-calculator.html">CGPA Converter</a></li></ul></div>
+    <div class="footer-col"><h4>Text Tools</h4><ul><li><a href="word-counter.html">Word Counter</a></li><li><a href="remove-spaces.html">Remove Spaces</a></li></ul></div>
+    <div class="footer-col"><h4>Dev Tools</h4><ul><li><a href="password-generator.html">Password Generator</a></li><li><a href="base64.html">Base64 Tool</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2025 <strong>ToolsHub</strong></span><span>Free forever · No login</span></div>
+</footer>
+<script src="../js/main.js"></script>
+<script>
+function convert(type){
+  const t=document.getElementById('txt').value;
+  if(!t.trim())return;
+  let out=t;
+  if(type==='upper'){out=t.toUpperCase();document.getElementById('caseLabel').textContent='UPPERCASE';}
+  else if(type==='lower'){out=t.toLowerCase();document.getElementById('caseLabel').textContent='lowercase';}
+  else if(type==='title'){out=t.toLowerCase().replace(/\b\w/g,c=>c.toUpperCase());document.getElementById('caseLabel').textContent='Title Case';}
+  else if(type==='sentence'){out=t.toLowerCase().replace(/(^\s*\w|[.!?]\s*\w)/g,c=>c.toUpperCase());document.getElementById('caseLabel').textContent='Sentence case';}
+  document.getElementById('output').textContent=out;
+  document.getElementById('result').classList.add('show');
+}
+</script>
+</body>
+</html>
