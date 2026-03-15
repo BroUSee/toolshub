@@ -3,681 +3,234 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ToolsHub — Free Online Tools</title>
-<meta name="description" content="Free online tools for students and developers. CGPA calculator, percentage, EMI, password generator and more. No signup required.">
-<style>
-/* ── FONTS (system fonts — no internet needed) ── */
-* { margin:0; padding:0; box-sizing:border-box; }
-:root {
-  --bg:#0d0d14;
-  --card:#141420;
-  --card2:#1c1c2e;
-  --border:#2a2a40;
-  --accent:#00e5ff;
-  --orange:#ff6b35;
-  --green:#00c896;
-  --yellow:#ffd60a;
-  --text:#e8e8f5;
-  --muted:#6b6b8a;
-  --muted2:#444460;
-}
-body {
-  background:var(--bg);
-  color:var(--text);
-  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
-  min-height:100vh;
-  overflow-x:hidden;
-}
-/* grid bg */
-body::before {
-  content:'';
-  position:fixed;inset:0;
-  background:repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(0,229,255,0.025) 39px,rgba(0,229,255,0.025) 40px),
-             repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(0,229,255,0.025) 39px,rgba(0,229,255,0.025) 40px);
-  pointer-events:none;z-index:0;
-}
-/* ── NAV ── */
-nav {
-  position:sticky;top:0;z-index:200;
-  background:rgba(13,13,20,0.92);
-  backdrop-filter:blur(16px);
-  border-bottom:1px solid var(--border);
-  padding:0 24px;height:58px;
-  display:flex;align-items:center;justify-content:space-between;
-}
-.logo { font-size:1.4rem;font-weight:800;letter-spacing:-1px; }
-.logo b { color:var(--accent); }
-.nav-badge {
-  font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;
-  color:var(--accent);border:1px solid rgba(0,229,255,0.3);
-  padding:4px 12px;border-radius:20px;background:rgba(0,229,255,0.05);
-}
-/* ── HERO ── */
-.hero {
-  position:relative;z-index:1;
-  text-align:center;padding:70px 20px 50px;
-}
-.hero-pill {
-  display:inline-flex;align-items:center;gap:8px;
-  background:rgba(0,229,255,0.07);border:1px solid rgba(0,229,255,0.2);
-  padding:6px 18px;border-radius:30px;font-size:0.75rem;color:var(--accent);
-  margin-bottom:22px;
-}
-.dot-live { width:7px;height:7px;background:var(--accent);border-radius:50%;animation:blink 1.8s infinite; }
-@keyframes blink { 0%,100%{opacity:1}50%{opacity:0.2} }
-.hero h1 { font-size:clamp(2.2rem,5vw,4.2rem);font-weight:900;letter-spacing:-2px;line-height:1.05;margin-bottom:16px; }
-.hero h1 em { color:var(--accent);font-style:normal;position:relative; }
-.hero p { color:var(--muted);font-size:0.95rem;line-height:1.7;max-width:480px;margin:0 auto 32px; }
-/* stats */
-.stats {
-  position:relative;z-index:1;
-  display:flex;justify-content:center;gap:0;
-  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
-  background:var(--card);margin-bottom:50px;
-}
-.stat { padding:18px 40px;text-align:center;border-right:1px solid var(--border); }
-.stat:last-child{border-right:none;}
-.stat-n { font-size:1.8rem;font-weight:900;color:var(--accent); }
-.stat-l { font-size:0.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:2px; }
-/* ── SECTIONS ── */
-.section { position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 20px 50px; }
-.sec-head {
-  display:flex;align-items:center;gap:14px;
-  margin-bottom:24px;padding-bottom:16px;
-  border-bottom:1px solid var(--border);
-}
-.sec-icon { font-size:1.3rem; }
-.sec-title { font-size:1.1rem;font-weight:800;letter-spacing:-0.3px; }
-.sec-count { font-size:0.7rem;color:var(--muted);background:var(--card2);border:1px solid var(--border);padding:3px 10px;border-radius:20px; }
-/* ── GRID ── */
-.grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px; }
-/* ── CARDS ── */
-.card {
-  background:var(--card);border:1px solid var(--border);
-  border-radius:14px;padding:22px;cursor:pointer;
-  transition:transform .25s,border-color .25s,box-shadow .25s;
-  position:relative;overflow:hidden;
-}
-.card::before { content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,229,255,0.04),transparent 60%);opacity:0;transition:opacity .3s; }
-.card:hover { transform:translateY(-5px);border-color:rgba(0,229,255,0.35);box-shadow:0 16px 40px rgba(0,0,0,0.5),0 0 0 1px rgba(0,229,255,0.1); }
-.card:hover::before{opacity:1;}
-.card-icon { font-size:1.6rem;margin-bottom:14px; }
-.card h3 { font-size:0.95rem;font-weight:700;margin-bottom:6px; }
-.card p { font-size:0.78rem;color:var(--muted);line-height:1.6; }
-.badge {
-  position:absolute;top:14px;right:14px;
-  font-size:0.58rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;
-  padding:3px 8px;border-radius:5px;
-}
-.b-hot{background:rgba(255,107,53,0.15);color:var(--orange);}
-.b-new{background:rgba(0,200,150,0.12);color:var(--green);}
-.b-pop{background:rgba(255,214,10,0.12);color:var(--yellow);}
-/* ── MODAL ── */
-.overlay {
-  position:fixed;inset:0;background:rgba(0,0,0,0.75);
-  backdrop-filter:blur(12px);z-index:1000;
-  display:flex;align-items:center;justify-content:center;padding:20px;
-  opacity:0;pointer-events:none;transition:opacity .25s;
-}
-.overlay.on{opacity:1;pointer-events:all;}
-.modal {
-  background:var(--card);border:1px solid var(--border);
-  border-radius:20px;padding:32px;width:100%;max-width:540px;
-  max-height:90vh;overflow-y:auto;
-  transform:translateY(24px) scale(0.96);transition:transform .3s;
-  position:relative;
-}
-.overlay.on .modal{transform:translateY(0) scale(1);}
-.modal-close {
-  position:absolute;top:14px;right:14px;
-  width:30px;height:30px;border-radius:8px;
-  background:var(--card2);border:1px solid var(--border);
-  color:var(--muted);font-size:1rem;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;transition:all .2s;
-}
-.modal-close:hover{border-color:var(--accent);color:var(--text);}
-.modal h2 { font-size:1.4rem;font-weight:800;letter-spacing:-0.5px;margin-bottom:4px; }
-.modal-sub { font-size:0.8rem;color:var(--muted);margin-bottom:24px; }
-/* form */
-.lbl { display:block;font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:7px; }
-input[type=number],input[type=text],input[type=date],textarea,select {
-  width:100%;background:var(--bg);border:1px solid var(--border);
-  color:var(--text);padding:11px 14px;border-radius:9px;
-  font-family:inherit;font-size:0.9rem;outline:none;
-  transition:border-color .2s,box-shadow .2s;
-  margin-bottom:14px;
-}
-input:focus,textarea:focus,select:focus {
-  border-color:var(--accent);box-shadow:0 0 0 3px rgba(0,229,255,0.08);
-}
-textarea{resize:vertical;}
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-.btn-calc {
-  width:100%;background:var(--accent);color:#000;
-  border:none;padding:13px;border-radius:10px;
-  font-family:inherit;font-weight:800;font-size:0.95rem;
-  cursor:pointer;transition:all .2s;margin-top:4px;
-}
-.btn-calc:hover{background:#00cfea;transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,229,255,0.25);}
-/* result */
-.result {
-  background:linear-gradient(135deg,var(--card2),var(--bg));
-  border:1px solid rgba(0,229,255,0.2);
-  border-radius:12px;padding:20px;margin-top:18px;display:none;
-}
-.result.show{display:block;}
-.res-lbl{font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--accent);margin-bottom:8px;}
-.res-main{font-size:2.2rem;font-weight:900;color:var(--accent);letter-spacing:-1px;line-height:1;}
-.res-sub{font-size:0.78rem;color:var(--muted);margin-top:8px;line-height:1.6;}
-.copy-it {
-  background:rgba(0,229,255,0.08);border:1px solid rgba(0,229,255,0.2);
-  color:rgba(0,229,255,0.8);padding:6px 14px;border-radius:6px;
-  font-family:inherit;font-size:0.75rem;cursor:pointer;margin-top:12px;transition:all .2s;
-}
-.copy-it:hover{background:rgba(0,229,255,0.15);color:var(--accent);}
-/* tabs */
-.tabs{display:flex;border:1px solid var(--border);border-radius:9px;overflow:hidden;margin-bottom:18px;}
-.tab{flex:1;padding:10px;text-align:center;font-size:0.8rem;font-weight:700;cursor:pointer;background:transparent;border:none;color:var(--muted);font-family:inherit;border-right:1px solid var(--border);transition:all .2s;}
-.tab:last-child{border-right:none;}
-.tab.on{background:var(--accent);color:#000;}
-/* grid btns */
-.btn-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px;}
-.btn-sm{padding:10px;border-radius:8px;font-family:inherit;font-size:0.8rem;font-weight:700;cursor:pointer;border:1px solid var(--border);background:var(--card2);color:var(--text);transition:all .2s;}
-.btn-sm:hover{border-color:var(--accent);color:var(--accent);}
-.btn-sm.primary{background:var(--accent);color:#000;border-color:var(--accent);}
-/* strength */
-.s-track{height:5px;background:var(--border);border-radius:3px;margin-top:10px;overflow:hidden;}
-.s-fill{height:100%;border-radius:3px;transition:all .4s;}
-/* count chips */
-.chips{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px;}
-.chip{background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center;}
-.chip-n{font-size:1.3rem;font-weight:800;color:var(--accent);}
-.chip-l{font-size:0.63rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:2px;}
-/* color preview */
-.color-preview{width:100%;height:52px;border-radius:10px;margin-top:12px;border:1px solid var(--border);transition:background .3s;}
-/* footer */
-footer{position:relative;z-index:1;text-align:center;padding:36px 20px;border-top:1px solid var(--border);color:var(--muted);font-size:0.78rem;line-height:1.9;margin-top:20px;}
-footer strong{color:var(--accent);}
-@media(max-width:600px){
-  .stats{flex-wrap:wrap;}
-  .stat{flex:1 1 50%;border-bottom:1px solid var(--border);}
-  .row2{grid-template-columns:1fr;}
-  .hero h1{font-size:2rem;letter-spacing:-1px;}
-  .chips{grid-template-columns:repeat(2,1fr);}
-}
-</style>
+<title>ToolsHub — Free Online Tools for Students & Developers</title>
+<meta name="description" content="Free online tools for students and developers. Calculate CGPA, percentage, EMI, age, generate passwords, convert files and more. No signup required.">
+<meta name="keywords" content="free online tools, CGPA calculator, percentage calculator, EMI calculator, password generator, word counter, age calculator">
+<meta property="og:title" content="ToolsHub — Free Online Tools">
+<meta property="og:description" content="20+ free tools for students and developers. No login required.">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<div class="cursor"></div>
+<div class="cursor-ring"></div>
+
 <nav>
-  <div class="logo">Tools<b>Hub</b></div>
-  <div class="nav-badge">FREE · NO LOGIN</div>
+  <a href="index.html" class="logo">Tools<span>Hub</span></a>
+  <ul class="nav-links">
+    <li><a href="#calculators">Calculators</a></li>
+    <li><a href="#text-tools">Text Tools</a></li>
+    <li><a href="#dev-tools">Dev Tools</a></li>
+    <li><a href="all-tools.html" class="nav-cta">All Tools →</a></li>
+  </ul>
 </nav>
 
-<div class="hero">
-  <div class="hero-pill"><div class="dot-live"></div>13 Tools — All 100% Free</div>
-  <h1>Every Tool<br>You'll Ever <em>Need.</em></h1>
-  <p>Fast free tools for students, developers and everyone. No signup. No ads tracking. No limits.</p>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">⚡ 100% Free — No Login Needed</div>
+    <h1>Every Tool<br>You'll Ever<br><em>Need.</em></h1>
+    <p class="hero-desc">Fast, free tools for students, developers and everyday use. From CGPA calculators to password generators — we've got you covered.</p>
+    <div class="hero-actions">
+      <a href="#calculators" class="btn-primary">Explore Tools →</a>
+      <a href="tools/all-tools.html" class="btn-outline">View All 20+</a>
+    </div>
+  </div>
+
+  <!-- Live mini tool in hero -->
+  <div class="hero-right">
+    <div class="mini-tool-title"><span>%</span> Quick Percentage Calculator</div>
+    <div class="input-group">
+      <label class="input-label">What is</label>
+      <input type="number" id="hp1" placeholder="25" oninput="heroCalc()">
+    </div>
+    <div class="input-group">
+      <label class="input-label">% of</label>
+      <input type="number" id="hp2" placeholder="400" oninput="heroCalc()">
+    </div>
+    <div class="result-area" id="heroResult">
+      <div class="result-label-sm">Answer</div>
+      <div class="result-main" id="heroAnswer">—</div>
+      <div class="result-sub" id="heroSub"></div>
+    </div>
+    <div style="margin-top:16px">
+      <a href="percentage-calculator.html" style="color:var(--accent2);font-size:0.82rem;font-weight:700;text-decoration:none">Open Full Tool →</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stat"><div class="stat-num">20+</div><div class="stat-label">Free Tools</div></div>
+  <div class="stat"><div class="stat-num">0</div><div class="stat-label">Signup Required</div></div>
+  <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Free Forever</div></div>
+  <div class="stat"><div class="stat-num">∞</div><div class="stat-label">Daily Uses</div></div>
 </div>
 
-<div class="stats">
-  <div class="stat"><div class="stat-n">13+</div><div class="stat-l">Free Tools</div></div>
-  <div class="stat"><div class="stat-n">0</div><div class="stat-l">Signup Needed</div></div>
-  <div class="stat"><div class="stat-n">100%</div><div class="stat-l">Free Forever</div></div>
-  <div class="stat"><div class="stat-n">∞</div><div class="stat-l">Daily Uses</div></div>
-</div>
+<!-- CALCULATOR TOOLS -->
+<section class="tools-section" id="calculators">
+  <div class="section-header">
+    <div class="section-title">Calculator Tools<span class="dot">.</span></div>
+    <a href="all-tools.html#calculators" class="view-all">View All →</a>
+  </div>
+  <div class="tools-grid">
 
-<!-- CALCULATORS -->
-<div class="section">
-  <div class="sec-head">
-    <div class="sec-icon">🧮</div>
-    <div class="sec-title">Calculator Tools</div>
-    <div class="sec-count">6 tools</div>
+    <a href="percentage-calculator.html" class="tool-card">
+      <span class="tool-badge badge-hot">🔥 Hot</span>
+      <div class="tool-icon-wrap" style="background:#fde8e3">%</div>
+      <h3>Percentage Calculator</h3>
+      <p>Calculate any percentage instantly. Find what % one number is of another.</p>
+    </a>
+
+    <a href="age-calculator.html" class="tool-card">
+      <span class="tool-badge badge-popular">⭐ Popular</span>
+      <div class="tool-icon-wrap" style="background:#fef9e3">🎂</div>
+      <h3>Age Calculator</h3>
+      <p>Find your exact age in years, months, days, hours and minutes.</p>
+    </a>
+
+    <a href="cgpa-calculator.html" class="tool-card">
+      <span class="tool-badge badge-hot">🔥 Hot</span>
+      <div class="tool-icon-wrap" style="background:#e3f5ec">🎓</div>
+      <h3>CGPA to Percentage</h3>
+      <p>Convert CGPA to percentage for all Indian universities including AKTU, VTU, Anna.</p>
+    </a>
+
+    <a href="tools/emi-calculator.html" class="tool-card">
+      <span class="tool-badge badge-new">✨ New</span>
+      <div class="tool-icon-wrap" style="background:#fde8e3">💰</div>
+      <h3>EMI Calculator</h3>
+      <p>Calculate monthly loan EMI with total interest and payment breakdown.</p>
+    </a>
+
+    <a href="gst-calculator.html" class="tool-card">
+      <span class="tool-badge badge-new">✨ New</span>
+      <div class="tool-icon-wrap" style="background:#fef9e3">🧾</div>
+      <h3>GST Calculator</h3>
+      <p>Add or remove GST from any amount. Supports all GST slabs — 5%, 12%, 18%, 28%.</p>
+    </a>
+
+    <a href="discount-calculator.html" class="tool-card">
+      <div class="tool-icon-wrap" style="background:#e3f5ec">🏷️</div>
+      <h3>Discount Calculator</h3>
+      <p>Find final price after discount. Calculate how much you save on any deal.</p>
+    </a>
+
   </div>
-  <div class="grid">
-    <div class="card" onclick="open_('pct')"><div class="badge b-hot">🔥 Hot</div><div class="card-icon">%</div><h3>Percentage Calculator</h3><p>Calculate any percentage, find what % one number is of another.</p></div>
-    <div class="card" onclick="open_('age')"><div class="badge b-pop">⭐ Popular</div><div class="card-icon">🎂</div><h3>Age Calculator</h3><p>Find exact age in years, months, days and hours.</p></div>
-    <div class="card" onclick="open_('cgpa')"><div class="badge b-hot">🔥 Hot</div><div class="card-icon">🎓</div><h3>CGPA to Percentage</h3><p>Convert CGPA — supports AKTU, VTU, Anna University and more.</p></div>
-    <div class="card" onclick="open_('emi')"><div class="badge b-new">✨ New</div><div class="card-icon">💰</div><h3>EMI Calculator</h3><p>Monthly loan EMI with total interest breakdown.</p></div>
-    <div class="card" onclick="open_('gst')"><div class="badge b-new">✨ New</div><div class="card-icon">🧾</div><h3>GST Calculator</h3><p>Add or remove GST — all Indian slabs supported.</p></div>
-    <div class="card" onclick="open_('disc')"><div class="card-icon">🏷️</div><h3>Discount Calculator</h3><p>Find final price after any discount instantly.</p></div>
-  </div>
-</div>
+</section>
 
 <!-- TEXT TOOLS -->
-<div class="section">
-  <div class="sec-head">
-    <div class="sec-icon">📝</div>
-    <div class="sec-title">Text Tools</div>
-    <div class="sec-count">3 tools</div>
+<section class="tools-section" id="text-tools" style="padding-top:0">
+  <div class="section-header">
+    <div class="section-title">Text Tools<span class="dot">.</span></div>
+    <a href="tools/all-tools.html#text" class="view-all">View All →</a>
   </div>
-  <div class="grid">
-    <div class="card" onclick="open_('wc')"><div class="badge b-pop">⭐ Popular</div><div class="card-icon">📝</div><h3>Word Counter</h3><p>Count words, characters, sentences — live as you type.</p></div>
-    <div class="card" onclick="open_('cc')"><div class="card-icon">Aa</div><h3>Case Converter</h3><p>UPPERCASE, lowercase, Title Case, Sentence case.</p></div>
-    <div class="card" onclick="open_('rs')"><div class="card-icon">✂️</div><h3>Remove Extra Spaces</h3><p>Clean messy copied text in one click.</p></div>
+  <div class="tools-grid">
+
+    <a href="word-counter.html" class="tool-card">
+      <span class="tool-badge badge-popular">⭐ Popular</span>
+      <div class="tool-icon-wrap" style="background:#e3f5ec">📝</div>
+      <h3>Word Counter</h3>
+      <p>Count words, characters, sentences and paragraphs. See estimated read time live.</p>
+    </a>
+
+    <a href="tools/case-converter.html" class="tool-card">
+      <div class="tool-icon-wrap" style="background:#fde8e3">Aa</div>
+      <h3>Case Converter</h3>
+      <p>Convert text to UPPERCASE, lowercase, Title Case or Sentence case instantly.</p>
+    </a>
+
+    <a href="remove-spaces.html" class="tool-card">
+      <div class="tool-icon-wrap" style="background:#fef9e3">✂️</div>
+      <h3>Remove Extra Spaces</h3>
+      <p>Clean messy copied text. Remove extra spaces, tabs and blank lines in one click.</p>
+    </a>
+
   </div>
-</div>
+</section>
 
 <!-- DEV TOOLS -->
-<div class="section">
-  <div class="sec-head">
-    <div class="sec-icon">⚙️</div>
-    <div class="sec-title">Developer Tools</div>
-    <div class="sec-count">4 tools</div>
+<section class="tools-section" id="dev-tools" style="padding-top:0">
+  <div class="section-header">
+    <div class="section-title">Developer Tools<span class="dot">.</span></div>
+    <a href="tools/all-tools.html#dev" class="view-all">View All →</a>
   </div>
-  <div class="grid">
-    <div class="card" onclick="open_('pass')"><div class="badge b-hot">🔥 Hot</div><div class="card-icon">🔐</div><h3>Password Generator</h3><p>Strong secure passwords with live strength meter.</p></div>
-    <div class="card" onclick="open_('b64')"><div class="badge b-new">✨ New</div><div class="card-icon">⚙️</div><h3>Base64 Encoder/Decoder</h3><p>Encode text to Base64 or decode Base64 strings.</p></div>
-    <div class="card" onclick="open_('clr')"><div class="card-icon">🎨</div><h3>HEX to RGB Converter</h3><p>Convert color codes for your CSS instantly.</p></div>
-    <div class="card" onclick="open_('si')"><div class="card-icon">📐</div><h3>SI / CI Calculator</h3><p>Simple & Compound Interest calculator for students.</p></div>
+  <div class="tools-grid">
+
+    <a href="password-generator.html" class="tool-card">
+      <span class="tool-badge badge-hot">🔥 Hot</span>
+      <div class="tool-icon-wrap" style="background:#e3f5ec">🔐</div>
+      <h3>Password Generator</h3>
+      <p>Generate strong secure passwords with custom length and character options.</p>
+    </a>
+
+    <a href="base64.html" class="tool-card">
+      <span class="tool-badge badge-new">✨ New</span>
+      <div class="tool-icon-wrap" style="background:#fde8e3">⚙️</div>
+      <h3>Base64 Encoder/Decoder</h3>
+      <p>Encode text to Base64 or decode Base64 strings. Used by developers daily.</p>
+    </a>
+
+    <a href="color-converter.html" class="tool-card">
+      <div class="tool-icon-wrap" style="background:#fef9e3">🎨</div>
+      <h3>HEX to RGB Converter</h3>
+      <p>Convert HEX color codes to RGB and RGBA values for your CSS instantly.</p>
+    </a>
+
   </div>
-</div>
+</section>
 
 <footer>
-  <strong>ToolsHub</strong> — Free online tools for students & developers<br>
-  No signup · No data stored · No tracking · Works offline<br>
-  <span style="color:#444460">Built with HTML + CSS + JavaScript</span><br><br>
-  <a href="privacy-policy.html" style="color:#00e5ff;text-decoration:none;font-weight:600">Privacy Policy</a>
-  <span style="color:#2a2a40"> &nbsp;·&nbsp; </span>
-  <a href="about.html" style="color:#6b6b8a;text-decoration:none">About Us</a>
-  <span style="color:#2a2a40"> &nbsp;·&nbsp; </span>
-  <a href="contact.html" style="color:#6b6b8a;text-decoration:none">Contact</a>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="logo">Tools<span>Hub</span></a>
+      <p class="footer-desc">Free online tools for students, developers and everyday users. No signup, no tracking, no nonsense.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Calculators</h4>
+      <ul>
+        <li><a href="percentage-calculator.html">Percentage</a></li>
+        <li><a href="age-calculator.html">Age Calculator</a></li>
+        <li><a href="cgpa-calculator.html">CGPA Converter</a></li>
+        <li><a href="emi-calculator.html">EMI Calculator</a></li>
+        <li><a href="gst-calculator.html">GST Calculator</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Text Tools</h4>
+      <ul>
+        <li><a href="word-counter.html">Word Counter</a></li>
+        <li><a href="case-converter.html">Case Converter</a></li>
+        <li><a href="remove-spaces.html">Remove Spaces</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Dev Tools</h4>
+      <ul>
+        <li><a href="password-generator.html">Password Generator</a></li>
+        <li><a href="base64.html">Base64 Tool</a></li>
+        <li><a href="color-converter.html">Color Converter</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 <strong>ToolsHub</strong> — Free forever. No login needed.</span>
+    <span>Built with ❤️ for students & developers</span>
+  </div>
 </footer>
 
-<!-- MODAL -->
-<div class="overlay" id="ov" onclick="closeOv(event)">
-<div class="modal" id="modal">
-  <button class="modal-close" onclick="closeModal()">✕</button>
-  <h2 id="mtitle"></h2>
-  <p class="modal-sub" id="msub"></p>
-  <div id="mbody"></div>
-</div>
-</div>
-
+<script src="js/main.js"></script>
 <script>
-// ── OPEN / CLOSE ──────────────────────────────────────────────
-function open_(id){
-  const t=tools[id];
-  document.getElementById('mtitle').textContent=t.title;
-  document.getElementById('msub').textContent=t.sub;
-  document.getElementById('mbody').innerHTML=t.html;
-  document.getElementById('ov').classList.add('on');
-  document.body.style.overflow='hidden';
-  if(t.init) t.init();
-}
-function closeModal(){document.getElementById('ov').classList.remove('on');document.body.style.overflow='';}
-function closeOv(e){if(e.target===document.getElementById('ov'))closeModal();}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
-
-// ── COPY ──────────────────────────────────────────────────────
-function cp(id,btn){
-  const t=document.getElementById(id)?.textContent||'';
-  if(!t.trim())return;
-  navigator.clipboard?.writeText(t).then(()=>flash(btn)).catch(()=>fbCopy(t,btn))||fbCopy(t,btn);
-}
-function fbCopy(t,btn){const x=document.createElement('textarea');x.value=t;x.style.cssText='position:fixed;opacity:0';document.body.appendChild(x);x.select();try{document.execCommand('copy');flash(btn);}catch(e){}document.body.removeChild(x);}
-function flash(btn){if(!btn)return;const o=btn.textContent;btn.textContent='✓ Copied!';btn.style.color='#00c896';setTimeout(()=>{btn.textContent=o;btn.style.color='';},2000);}
-function show(id){document.getElementById(id)?.classList.add('show');}
-
-// ── ALL TOOLS ────────────────────────────────────────────────
-const tools = {
-
-// PERCENTAGE
-pct:{
-  title:'% Percentage Calculator',
-  sub:'Three modes — calculate any percentage instantly',
-  html:`
-    <p style="font-size:.72rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px">Mode 1 — What is X% of Y?</p>
-    <div class="row2"><div><label class="lbl">Percentage %</label><input type="number" id="pp1" placeholder="25" oninput="p1()"></div><div><label class="lbl">Of Number</label><input type="number" id="pp2" placeholder="400" oninput="p1()"></div></div>
-    <div class="result" id="pr1"><div class="res-lbl">Answer</div><div class="res-main" id="pv1"></div><div class="res-sub" id="ps1"></div></div>
-    <div style="height:1px;background:var(--border);margin:20px 0"></div>
-    <p style="font-size:.72rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px">Mode 2 — A is what % of B?</p>
-    <div class="row2"><div><label class="lbl">Value A</label><input type="number" id="pp3" placeholder="50" oninput="p2()"></div><div><label class="lbl">Value B</label><input type="number" id="pp4" placeholder="200" oninput="p2()"></div></div>
-    <div class="result" id="pr2"><div class="res-lbl">A is</div><div class="res-main" id="pv2"></div><div class="res-sub">of B</div></div>
-    <div style="height:1px;background:var(--border);margin:20px 0"></div>
-    <p style="font-size:.72rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px">Mode 3 — % Change</p>
-    <div class="row2"><div><label class="lbl">Original</label><input type="number" id="pp5" placeholder="100" oninput="p3()"></div><div><label class="lbl">New Value</label><input type="number" id="pp6" placeholder="125" oninput="p3()"></div></div>
-    <div class="result" id="pr3"><div class="res-lbl">Change</div><div class="res-main" id="pv3"></div><div class="res-sub" id="ps3"></div></div>`
-},
-
-// AGE
-age:{
-  title:'🎂 Age Calculator',
-  sub:'Exact age with birthday countdown',
-  html:`
-    <label class="lbl">Your Date of Birth</label><input type="date" id="dob" onchange="calcAge()">
-    <button class="btn-calc" onclick="calcAge()">Calculate Age</button>
-    <div class="result" id="ager"><div class="res-lbl">Your Exact Age</div><div class="res-main" id="agev"></div><div class="res-sub" id="ages"></div></div>`
-},
-
-// CGPA
-cgpa:{
-  title:'🎓 CGPA to Percentage',
-  sub:'Supports all major Indian universities',
-  html:`
-    <label class="lbl">Your CGPA (out of 10)</label><input type="number" id="cg" placeholder="7.8" step=".01" min="0" max="10" oninput="calcCgpa()">
-    <label class="lbl">University Formula</label>
-    <select id="cf" onchange="calcCgpa()">
-      <option value="10">Standard × 10 — Most Universities</option>
-      <option value="9.5">CBSE / Private (× 9.5)</option>
-      <option value="9">Anna University (× 9)</option>
-      <option value="vtu">VTU (× 7.1 + 11)</option>
-      <option value="mu">Mumbai University (× 7.25 + 11)</option>
-    </select>
-    <div class="result" id="cgr"><div class="res-lbl">Your Percentage</div><div class="res-main" id="cgv"></div><div class="res-sub" id="cgs"></div></div>`
-},
-
-// EMI
-emi:{
-  title:'💰 EMI Calculator',
-  sub:'Monthly EMI with total interest breakdown',
-  html:`
-    <label class="lbl">Loan Amount (₹)</label><input type="number" id="la" placeholder="500000">
-    <div class="row2"><div><label class="lbl">Annual Rate (%)</label><input type="number" id="lr" placeholder="8.5" step=".1"></div><div><label class="lbl">Tenure (Months)</label><input type="number" id="lt" placeholder="60"></div></div>
-    <button class="btn-calc" onclick="calcEmi()">Calculate EMI</button>
-    <div class="result" id="emir"><div class="res-lbl">Monthly EMI</div><div class="res-main" id="emiv"></div><div class="res-sub" id="emis"></div></div>`
-},
-
-// GST
-gst:{
-  title:'🧾 GST Calculator',
-  sub:'Add or remove GST — all Indian slabs',
-  html:`
-    <div class="tabs"><button class="tab on" id="gt1" onclick="gmode('add')">Add GST</button><button class="tab" id="gt2" onclick="gmode('rem')">Remove GST</button></div>
-    <label class="lbl" id="gal">Original Amount (₹)</label><input type="number" id="ga" placeholder="1000" oninput="calcGst()">
-    <label class="lbl">GST Rate</label>
-    <select id="gr" onchange="calcGst()">
-      <option value="5">5% — Essential goods</option>
-      <option value="12">12% — Processed food, computers</option>
-      <option value="18" selected>18% — Services, electronics</option>
-      <option value="28">28% — Luxury, automobiles</option>
-    </select>
-    <div class="result" id="gstr"><div class="res-lbl" id="grl">Final Price (with GST)</div><div class="res-main" id="gv"></div><div class="res-sub" id="gs"></div></div>`
-},
-
-// DISCOUNT
-disc:{
-  title:'🏷️ Discount Calculator',
-  sub:'Find final price and how much you save',
-  html:`
-    <div class="row2"><div><label class="lbl">Original Price (₹)</label><input type="number" id="dp" placeholder="2000" oninput="calcDisc()"></div><div><label class="lbl">Discount %</label><input type="number" id="dd" placeholder="30" oninput="calcDisc()"></div></div>
-    <div class="result" id="dr"><div class="res-lbl">Final Price</div><div class="res-main" id="dv"></div><div class="res-sub" id="ds"></div></div>`
-},
-
-// WORD COUNT
-wc:{
-  title:'📝 Word Counter',
-  sub:'Live count as you type',
-  html:`
-    <label class="lbl">Your Text</label>
-    <textarea id="wct" rows="8" placeholder="Paste or type text here..." oninput="countW()"></textarea>
-    <div class="chips">
-      <div class="chip"><div class="chip-n" id="cw">0</div><div class="chip-l">Words</div></div>
-      <div class="chip"><div class="chip-n" id="cc2">0</div><div class="chip-l">Characters</div></div>
-      <div class="chip"><div class="chip-n" id="cn">0</div><div class="chip-l">No Spaces</div></div>
-      <div class="chip"><div class="chip-n" id="cs">0</div><div class="chip-l">Sentences</div></div>
-      <div class="chip"><div class="chip-n" id="cp2">0</div><div class="chip-l">Paragraphs</div></div>
-      <div class="chip"><div class="chip-n" id="cr">0 min</div><div class="chip-l">Read Time</div></div>
-    </div>
-    <button class="btn-calc" style="margin-top:14px" onclick="document.getElementById('wct').value='';countW()">Clear Text</button>`
-},
-
-// CASE CONVERT
-cc:{
-  title:'Aa Case Converter',
-  sub:'Transform text to any case format',
-  html:`
-    <label class="lbl">Your Text</label><textarea id="cct" rows="5" placeholder="Type or paste text..."></textarea>
-    <div class="btn-grid">
-      <button class="btn-sm primary" onclick="doCase('upper')">UPPERCASE</button>
-      <button class="btn-sm" onclick="doCase('lower')">lowercase</button>
-      <button class="btn-sm" onclick="doCase('title')">Title Case</button>
-      <button class="btn-sm" onclick="doCase('sent')">Sentence case</button>
-    </div>
-    <div class="result" id="ccr"><div class="res-lbl" id="ccl">Result</div><div id="cco" style="font-size:.9rem;line-height:1.7;word-break:break-word;color:var(--text)"></div><button class="copy-it" onclick="cp('cco',this)">Copy Result</button></div>`
-},
-
-// REMOVE SPACES
-rs:{
-  title:'✂️ Remove Extra Spaces',
-  sub:'Clean messy text in one click',
-  html:`
-    <label class="lbl">Messy Text</label><textarea id="rst" rows="6" placeholder="Paste text with extra spaces..."></textarea>
-    <div class="btn-grid">
-      <button class="btn-sm primary" onclick="doSpace('extra')">Remove Extra Spaces</button>
-      <button class="btn-sm" onclick="doSpace('lines')">Remove Blank Lines</button>
-      <button class="btn-sm" onclick="doSpace('trim')">Trim Each Line</button>
-      <button class="btn-sm" onclick="doSpace('all')">Remove ALL Spaces</button>
-    </div>
-    <div class="result" id="rsr"><div class="res-lbl">Cleaned Text</div><div id="rso" style="font-size:.88rem;line-height:1.7;word-break:break-word;color:var(--text)"></div><button class="copy-it" onclick="cp('rso',this)">Copy Result</button></div>`
-},
-
-// PASSWORD
-pass:{
-  title:'🔐 Password Generator',
-  sub:'Secure random password — never sent to server',
-  html:`
-    <label class="lbl">Length: <b id="pll">16</b></label>
-    <input type="range" id="pl" min="6" max="64" value="16" oninput="document.getElementById('pll').textContent=this.value;genPass()" style="width:100%;accent-color:var(--accent);margin-bottom:14px">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px">
-      <label style="display:flex;align-items:center;gap:8px;font-size:.84rem;cursor:pointer;background:var(--card2);padding:10px;border-radius:8px;border:1px solid var(--border)"><input type="checkbox" id="pu" checked onchange="genPass()" style="accent-color:var(--accent)"> Uppercase A-Z</label>
-      <label style="display:flex;align-items:center;gap:8px;font-size:.84rem;cursor:pointer;background:var(--card2);padding:10px;border-radius:8px;border:1px solid var(--border)"><input type="checkbox" id="plo" checked onchange="genPass()" style="accent-color:var(--accent)"> Lowercase a-z</label>
-      <label style="display:flex;align-items:center;gap:8px;font-size:.84rem;cursor:pointer;background:var(--card2);padding:10px;border-radius:8px;border:1px solid var(--border)"><input type="checkbox" id="pn" checked onchange="genPass()" style="accent-color:var(--accent)"> Numbers 0-9</label>
-      <label style="display:flex;align-items:center;gap:8px;font-size:.84rem;cursor:pointer;background:var(--card2);padding:10px;border-radius:8px;border:1px solid var(--border)"><input type="checkbox" id="ps2" onchange="genPass()" style="accent-color:var(--accent)"> Symbols !@#$</label>
-    </div>
-    <button class="btn-calc" onclick="genPass()">↻ Generate New</button>
-    <div class="result show" id="passr"><div class="res-lbl">Generated Password</div><div id="pout" style="font-size:1.1rem;letter-spacing:2px;word-break:break-all;line-height:1.5;color:var(--accent)"></div><div class="s-track"><div class="s-fill" id="sf"></div></div><div id="sl" style="font-size:.72rem;color:var(--muted);margin-top:6px"></div><button class="copy-it" onclick="cp('pout',this)">Copy Password</button></div>`,
-  init: genPass
-},
-
-// BASE64
-b64:{
-  title:'⚙️ Base64 Encoder / Decoder',
-  sub:'Runs in browser — nothing sent to server',
-  html:`
-    <div class="tabs"><button class="tab on" id="bt1" onclick="bmode('enc')">Encode → Base64</button><button class="tab" id="bt2" onclick="bmode('dec')">Decode ← Base64</button></div>
-    <label class="lbl" id="bl">Plain Text</label><textarea id="bi" rows="5" placeholder="Enter text to encode..."></textarea>
-    <button class="btn-calc" onclick="doB64()">Convert</button>
-    <div class="result" id="b64r"><div class="res-lbl" id="brl">Result</div><div id="bo" style="font-size:.82rem;word-break:break-all;line-height:1.7;color:var(--text)"></div><button class="copy-it" onclick="cp('bo',this)">Copy Result</button></div>`
-},
-
-// COLOR
-clr:{
-  title:'🎨 HEX ↔ RGB Converter',
-  sub:'Convert color codes for CSS',
-  html:`
-    <label class="lbl">Pick or Type HEX Color</label>
-    <div style="display:flex;gap:10px;align-items:center;margin-bottom:14px">
-      <input type="color" id="cpk" value="#00e5ff" onchange="fromPck()" style="width:54px;height:44px;border-radius:8px;border:1px solid var(--border);background:var(--bg);padding:3px;cursor:pointer">
-      <input type="text" id="hex" value="#00e5ff" placeholder="#00e5ff" oninput="fromHex()" style="flex:1;font-family:monospace;margin-bottom:0">
-    </div>
-    <div class="result show" id="clrr"><div class="res-lbl">Color Values</div><div id="rgbv" style="font-size:1.2rem;font-weight:800;color:var(--accent)"></div><div id="rgbv2" style="font-size:.8rem;color:var(--muted);margin-top:6px"></div><div class="color-preview" id="cprev"></div><button class="copy-it" onclick="cp('rgbv',this)">Copy RGB</button></div>`,
-  init:()=>fromHex()
-},
-
-// SI CI
-si:{
-  title:'📐 SI / CI Calculator',
-  sub:'Simple Interest and Compound Interest',
-  html:`
-    <div class="tabs"><button class="tab on" id="sit1" onclick="simode('si')">Simple Interest</button><button class="tab" id="sit2" onclick="simode('ci')">Compound Interest</button></div>
-    <label class="lbl">Principal Amount (₹)</label><input type="number" id="sip" placeholder="10000">
-    <div class="row2"><div><label class="lbl">Rate per Year (%)</label><input type="number" id="sir" placeholder="8" step=".1"></div><div><label class="lbl">Time (Years)</label><input type="number" id="sit" placeholder="3" step=".5"></div></div>
-    <div id="ciopt" style="display:none"><label class="lbl">Compound Frequency</label><select id="sif"><option value="1">Annually</option><option value="2">Half-Yearly</option><option value="4">Quarterly</option><option value="12">Monthly</option></select></div>
-    <button class="btn-calc" onclick="calcSI()">Calculate</button>
-    <div class="result" id="sir2"><div class="res-lbl" id="sirl">Simple Interest</div><div class="res-main" id="siv"></div><div class="res-sub" id="sis"></div></div>`
-}
-
-}; // end tools
-
-// ── CALCULATOR LOGIC ───────────────────────────────────────────
-
-// Percentage
-function p1(){const p=+document.getElementById('pp1').value,n=+document.getElementById('pp2').value;if(isNaN(p)||isNaN(n))return;const r=(p/100)*n;document.getElementById('pv1').textContent=r.toFixed(2);document.getElementById('ps1').textContent=p+'% of '+n+' = '+r;show('pr1');}
-function p2(){const a=+document.getElementById('pp3').value,b=+document.getElementById('pp4').value;if(!b)return;document.getElementById('pv2').textContent=((a/b)*100).toFixed(2)+'%';show('pr2');}
-function p3(){const o=+document.getElementById('pp5').value,n=+document.getElementById('pp6').value;if(!o)return;const c=((n-o)/Math.abs(o))*100;document.getElementById('pv3').textContent=(c>=0?'+':'')+c.toFixed(2)+'%';document.getElementById('ps3').textContent=c>=0?'Increase of '+(n-o):'Decrease of '+(o-n);show('pr3');}
-
-// Age
-function calcAge(){
-  const d=document.getElementById('dob').value;if(!d)return;
-  const dob=new Date(d),now=new Date();
-  if(dob>now){document.getElementById('agev').textContent='Future date!';show('ager');return;}
-  let y=now.getFullYear()-dob.getFullYear(),m=now.getMonth()-dob.getMonth(),da=now.getDate()-dob.getDate();
-  if(da<0){m--;da+=new Date(now.getFullYear(),now.getMonth(),0).getDate();}
-  if(m<0){y--;m+=12;}
-  const td=Math.floor((now-dob)/86400000);
-  const nb=new Date(now.getFullYear(),dob.getMonth(),dob.getDate());
-  if(nb<=now)nb.setFullYear(now.getFullYear()+1);
-  const dl=Math.ceil((nb-now)/86400000);
-  document.getElementById('agev').textContent=y+' Yrs, '+m+' Mo, '+da+' Days';
-  document.getElementById('ages').textContent='Total '+td.toLocaleString()+' days · '+( td*24).toLocaleString()+' hours · Next birthday in '+dl+' days 🎂';
-  show('ager');
-}
-
-// CGPA
-function calcCgpa(){
-  const c=+document.getElementById('cg').value,f=document.getElementById('cf').value;
-  if(isNaN(c)||c<0||c>10)return;
-  let p=f==='vtu'?c*7.1+11:f==='mu'?c*7.25+11:c*parseFloat(f);
-  p=Math.min(p,100);
-  const g=p>=75?'🟢 First Class with Distinction':p>=60?'🔵 First Class':p>=50?'🟡 Second Class':'🔴 Pass Class';
-  document.getElementById('cgv').textContent=p.toFixed(2)+'%';
-  document.getElementById('cgs').textContent=g;
-  show('cgr');
-}
-
-// EMI
-function calcEmi(){
-  const P=+document.getElementById('la').value,r=+document.getElementById('lr').value/12/100,n=+document.getElementById('lt').value;
-  if(!P||!r||!n)return;
-  const e=P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1),t=e*n;
-  document.getElementById('emiv').textContent='₹'+Math.round(e).toLocaleString('en-IN');
-  document.getElementById('emis').textContent='Total: ₹'+Math.round(t).toLocaleString('en-IN')+' · Interest: ₹'+Math.round(t-P).toLocaleString('en-IN');
-  show('emir');
-}
-
-// GST
-let gm='add';
-function gmode(m){gm=m;document.getElementById('gt1').className='tab'+(m==='add'?' on':'');document.getElementById('gt2').className='tab'+(m==='rem'?' on':'');document.getElementById('gal').textContent=m==='add'?'Original Amount (₹)':'Amount with GST (₹)';calcGst();}
-function calcGst(){
-  const a=+document.getElementById('ga').value,r=+document.getElementById('gr').value;if(!a)return;
-  let f,gv;
-  if(gm==='add'){gv=a*r/100;f=a+gv;document.getElementById('grl').textContent='Final Price (with GST)';}
-  else{const o=a/(1+r/100);gv=a-o;f=o;document.getElementById('grl').textContent='Original Price (excl. GST)';}
-  document.getElementById('gv').textContent='₹'+f.toFixed(2);
-  document.getElementById('gs').textContent='GST ('+r+'%): ₹'+gv.toFixed(2);
-  show('gstr');
-}
-
-// Discount
-function calcDisc(){
-  const p=+document.getElementById('dp').value,d=+document.getElementById('dd').value;if(!p||!d)return;
-  const s=p*d/100,f=p-s;
-  document.getElementById('dv').textContent='₹'+f.toFixed(2);
-  document.getElementById('ds').textContent='You save ₹'+s.toFixed(2)+' ('+d+'% off ₹'+p+')';
-  show('dr');
-}
-
-// Word Count
-function countW(){
-  const t=document.getElementById('wct').value;
-  document.getElementById('cw').textContent=t.trim()?t.trim().split(/\s+/).length:0;
-  document.getElementById('cc2').textContent=t.length;
-  document.getElementById('cn').textContent=t.replace(/\s/g,'').length;
-  document.getElementById('cs').textContent=t.split(/[.!?]+/).filter(s=>s.trim()).length;
-  document.getElementById('cp2').textContent=t.trim()?t.split(/\n\s*\n/).filter(p=>p.trim()).length||1:0;
-  const w=t.trim()?t.trim().split(/\s+/).length:0;
-  document.getElementById('cr').textContent=Math.ceil(w/200)+' min';
-}
-
-// Case
-function doCase(type){
-  const t=document.getElementById('cct').value;if(!t.trim())return;
-  const labels={upper:'UPPERCASE',lower:'lowercase',title:'Title Case',sent:'Sentence case'};
-  let o=t;
-  if(type==='upper')o=t.toUpperCase();
-  else if(type==='lower')o=t.toLowerCase();
-  else if(type==='title')o=t.toLowerCase().replace(/\b\w/g,c=>c.toUpperCase());
-  else o=t.toLowerCase().replace(/(^\s*\w|[.!?]\s*\w)/g,c=>c.toUpperCase());
-  document.getElementById('cco').textContent=o;
-  document.getElementById('ccl').textContent=labels[type];
-  show('ccr');
-}
-
-// Remove spaces
-function doSpace(type){
-  const t=document.getElementById('rst').value;if(!t.trim())return;
-  let o=t;
-  if(type==='extra')o=t.replace(/[ \t]+/g,' ').replace(/^ | $/gm,'').trim();
-  else if(type==='lines')o=t.replace(/^\s*[\r\n]/gm,'').trim();
-  else if(type==='trim')o=t.split('\n').map(l=>l.trim()).join('\n').trim();
-  else o=t.replace(/\s+/g,'');
-  document.getElementById('rso').textContent=o;
-  show('rsr');
-}
-
-// Password
-function genPass(){
-  const len=parseInt(document.getElementById('pl')?.value||16);
-  const u=document.getElementById('pu')?.checked;
-  const l=document.getElementById('plo')?.checked;
-  const n=document.getElementById('pn')?.checked;
-  const s=document.getElementById('ps2')?.checked;
-  let chars='';
-  if(u)chars+='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  if(l)chars+='abcdefghijklmnopqrstuvwxyz';
-  if(n)chars+='0123456789';
-  if(s)chars+='!@#$%^&*()_+-=[]{}|;:,.<>?';
-  if(!chars)chars='abcdefghijklmnopqrstuvwxyz';
-  let pass='';
-  const arr=new Uint32Array(len);
-  crypto.getRandomValues(arr);
-  arr.forEach(v=>pass+=chars[v%chars.length]);
-  document.getElementById('pout').textContent=pass;
-  const types=[u,l,n,s].filter(Boolean).length;
-  const c=['#ff6b35','#ffd60a','#00c896','#00e5ff'][Math.min(types-1,3)];
-  const lbs=['Weak','Fair','Strong','Very Strong'][Math.min(types-1,3)];
-  document.getElementById('sf').style.width=(types*25)+'%';
-  document.getElementById('sf').style.background=c;
-  document.getElementById('sl').textContent='Strength: '+lbs;
-}
-
-// Base64
-let bm='enc';
-function bmode(m){bm=m;document.getElementById('bt1').className='tab'+(m==='enc'?' on':'');document.getElementById('bt2').className='tab'+(m==='dec'?' on':'');document.getElementById('bl').textContent=m==='enc'?'Plain Text':'Base64 String';document.getElementById('bi').placeholder=m==='enc'?'Enter text to encode...':'Enter Base64 to decode...';}
-function doB64(){
-  const v=document.getElementById('bi').value;if(!v.trim())return;
-  let o='';
-  try{if(bm==='enc'){o=btoa(unescape(encodeURIComponent(v)));document.getElementById('brl').textContent='Base64 Encoded';}else{o=decodeURIComponent(escape(atob(v)));document.getElementById('brl').textContent='Decoded Text';}}
-  catch(e){o='⚠️ Invalid Base64 string';}
-  document.getElementById('bo').textContent=o;show('b64r');
-}
-
-// Color
-function fromHex(){
-  let h=(document.getElementById('hex')?.value||'#00e5ff').trim();
-  if(!h.startsWith('#'))h='#'+h;
-  if(!/^#[0-9A-Fa-f]{6}$/.test(h))return;
-  const r=parseInt(h.slice(1,3),16),g=parseInt(h.slice(3,5),16),b=parseInt(h.slice(5,7),16);
-  document.getElementById('rgbv').textContent='rgb('+r+', '+g+', '+b+')';
-  document.getElementById('rgbv2').textContent='rgba('+r+', '+g+', '+b+', 1.0)  ·  HEX: '+h.toUpperCase();
-  document.getElementById('cprev').style.background=h;
-  if(document.getElementById('cpk'))document.getElementById('cpk').value=h;
-}
-function fromPck(){const h=document.getElementById('cpk').value;document.getElementById('hex').value=h;fromHex();}
-
-// SI / CI
-let sim='si';
-function simode(m){sim=m;document.getElementById('sit1').className='tab'+(m==='si'?' on':'');document.getElementById('sit2').className='tab'+(m==='ci'?' on':'');document.getElementById('ciopt').style.display=m==='ci'?'block':'none';}
-function calcSI(){
-  const p=+document.getElementById('sip').value,r=+document.getElementById('sir').value,t=+document.getElementById('sit').value;
-  if(!p||!r||!t)return;
-  let interest,amount;
-  if(sim==='si'){interest=p*r*t/100;amount=p+interest;document.getElementById('sirl').textContent='Simple Interest';}
-  else{const n=+document.getElementById('sif').value;amount=p*Math.pow(1+r/(n*100),n*t);interest=amount-p;document.getElementById('sirl').textContent='Compound Interest';}
-  document.getElementById('siv').textContent='₹'+interest.toFixed(2);
-  document.getElementById('sis').textContent='Principal: ₹'+p.toLocaleString('en-IN')+' · Total Amount: ₹'+amount.toFixed(2);
-  show('sir2');
+function heroCalc() {
+  const p = parseFloat(document.getElementById('hp1').value);
+  const n = parseFloat(document.getElementById('hp2').value);
+  const res = document.getElementById('heroResult');
+  if (!isNaN(p) && !isNaN(n) && n !== 0) {
+    const ans = (p / 100) * n;
+    document.getElementById('heroAnswer').textContent = ans.toFixed(2);
+    document.getElementById('heroSub').textContent = `${p}% of ${n} equals ${ans.toFixed(4)}`;
+    res.classList.add('show');
+  }
 }
 </script>
 </body>
